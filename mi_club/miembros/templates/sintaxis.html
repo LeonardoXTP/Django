@@ -1,0 +1,253 @@
+<!-- 1. Variable en codigo -->
+{% with nombre='caballero' %}
+
+<h1>Buen día, {{ nombre }}</h1>
+
+{% endwith %}
+
+<!-- 2. Bucle for -->
+
+<ul>
+    {% for x in misusers %}
+        <li>{{ x.nombre }}</li>
+    {% endfor %}
+</ul>
+
+<!-- 3. Condicionales -->
+
+{% if bienvenida == 1 %}
+    <!-- or bienvenida == 4 -->
+    <h2>Hola</h2>
+
+{% elif bienvenida == 2 %}
+    <!-- and dia == 'Viernes'-->
+    <h2>Bienvenido</h2>
+
+{% else %}
+
+    <h2>Adiós</h2>
+
+{% endif %}
+
+<!-- {-% if '(' greeting == 1 and day == "Friday" ')' or greeting == 5 %-} los parentesis no están permitidos, el interprete lo lee así-->
+
+<!-- 4. Comprobar si un determinado elemento está presente en un objeto -->
+
+{% if 'perro' in animales %}
+
+    <h3>Hay un perro en la lista</h3>
+
+{% else %}
+
+    <h3>No hay un perro en la lista</h3>
+
+{% endif %}
+
+<!-- 5. Comprobar si un determinado elemento no está presente en un objeto -->
+
+{% if 'gato' not in animales %}
+
+    <h3>No hay un gato en la lista</h3>
+
+{% else %}
+
+    <h3>Hay un gato en la lista</h3>
+
+{% endif %}
+
+<!-- 6. Comprobar si dos objetos son iguales -->
+
+{% if x is y %}
+
+  <h1>Si</h1>
+
+{% else %}
+
+  <h1>No</h1>
+
+{% endif %}
+
+<!-- Operador == -->
+
+{% if x == y %}
+
+  <h1>Si</h1>
+
+{% else %}
+
+  <h1>No</h1>
+
+{% endif %}
+
+<!-- 7. Creación de variables -->
+
+{% with var1=x var2=x %}
+
+  {% if var1 is var2 %}
+
+    <h1>Si</h1>
+
+  {% else %}
+
+    <h1>No</h1>
+
+  {% endif %}
+
+{% endwith %}
+
+<!-- 8. Bucle que recorre los elementos -->
+
+<p>Bucle normal</p>
+
+{% for c in coches %}
+
+  <h3>{{ c.marca }}</h3>
+
+  <p>
+    {{ c.modelo }}
+    {{ c.año }}
+  </p>
+
+{% endfor %} 
+
+<!-- 9. Bucle modo inverso -->
+
+<p>Bucle inverso</p>
+
+{% for c in coches reversed %}
+
+  <h3>{{ c.marca }}</h3>
+
+  <p>
+    {{ c.modelo }}
+    {{ c.año }}
+  </p>
+
+{% endfor %}
+
+<!-- 10. empty, se usa para hacer algo especial si el objeto está vacío -->
+
+<ul>
+
+    {% for v in objetovacio %}
+
+      <li>{{ v.nombre }}</li>
+
+    {% empty %}
+
+      <li>No hay miembros</li>
+
+    {% endfor %}
+
+</ul>
+
+<!-- 11. Iteración actual, comenzando en 1 -->
+
+<ul>
+    <p>Contador desde 1</p>
+
+    {% for color in colores %}
+
+      <li>{{ forloop.counter }}</li>
+
+    {% endfor %}
+
+</ul>
+
+<!-- 12. Iteración actual, comenzando en 0 -->
+
+<ul>
+    <p>Contador desde 0</p>
+    
+    {% for color in colores %}
+
+      <li>{{ forloop.counter0 }}</li>
+
+    {% endfor %}
+
+</ul>
+
+<!-- 13. Dibuja un fondo azul para la primera iteración del bucle -->
+
+<ul>
+
+    {% for l in colores %}
+
+        <li
+            {% if forloop.first %}
+
+                style='background-color:lightblue;'
+
+            {% endif %}>
+
+            {{ x }}
+
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- 14. Dibuja un fondo azul para la primera iteración del bucle -->
+
+<ul>
+
+    {% for o in colores %}
+
+        <li
+            {% if forloop.last %}
+
+                style='background-color:lightblue;'
+
+            {% endif %}>
+
+            {{ x }}
+
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- 15. Contador regresivo, terminando en 1 -->
+
+<ul>
+    {% for r in colores %}
+
+        <li>{{ forloop.revcounter }}</li>
+
+    {% endfor %}
+</ul>
+
+<!-- 16. Contador regresivo, terminando en 0 -->
+
+<ul>
+    {% for r in colores %}
+
+        <li>{{ forloop.revcounter0 }}</li>
+
+    {% endfor %}
+</ul>
+
+<!-- 17. Comentarios, secciones de código que deben ignorarse -->
+
+<h2>Welcome Everyone</h2>
+<!-- Puedes agregar un mensaje a tu comentario, para ayudarte a recordar por qué escribiste el comentario -->
+{% comment "this was the original welcome message"%}
+    <h2>Welcome ladies and gentlemen</h2>
+{% endcomment %}
+
+<!-- 17.1. Comentarios pequeños -->
+
+<h1>Welcome{# Everyone#}</h1>
+
+
+<!-- 18. Etiqueta include -->
+
+<p>Esta pagina contiene un pie de pagina externo.</p>
+
+{% include 'sintaxis1.html' %}
+
+<!-- 19. Etiqueta include con variables externas -->
+
+{% include "sintaxis2.html" with me="LEONARDO" sponsor="W3SCHOOLS" %}
+
+<h1>Welcum</h1>
+
+<p>Esta es mi pagina</p>

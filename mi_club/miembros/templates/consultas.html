@@ -1,0 +1,15 @@
+<table border='1'>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+    </tr>
+
+    {% for d in misdatos %}
+        <tr>
+            <td>{{ d.nombre }}</td>
+            <td>{{ d.apellido }}</td>
+            <td>{{ d.email }}</td>
+        </tr>
+    {% endfor %}
+</table>
