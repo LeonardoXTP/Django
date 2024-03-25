@@ -1,0 +1,15 @@
+{% extends "maestro.html" %}
+
+{% block title %}
+    Detalles sobre {{usuarios.nombre}} {{usuarios.apellido}}
+{% endblock %}
+
+
+{% block content %}
+    <h1>{{usuarios.nombre}} {{usuarios.apellido}}</h1>
+
+    <p>Email {{usuarios.email}}</p>
+    <p>Numero {{usuarios.numero}}</p>
+
+    <p>Volver a la <a href="/miembros">lista de miembros</a></p>
+{% endblock %}

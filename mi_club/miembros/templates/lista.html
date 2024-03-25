@@ -1,0 +1,19 @@
+{% extends "maestro.html" %}
+
+{% block title %}
+    Lista de miembros del club
+{% endblock %}
+
+
+{% block content %}
+
+    <p><a href="/">Volver a la página principal</a></p>
+
+    <h1>Miembros</h1>
+
+    <ul>
+        {% for u in usuarios %}
+            <li><a href="detalles\{{u.id}}">{{u.nombre}} {{u.apellido}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
